@@ -104,4 +104,36 @@ const driverLogin = asyncHandler(async(req, res) => {
     );
 });
 
-export { driverRegister, driverLogin }
+const driverLogout = asyncHandler(async (req, res) => {
+    await Driver.findByIdAndUpdate(
+        req.driver._id,
+        {
+            $set: {
+                refreshToken: undefined
+            }
+        },
+        {
+            new: true
+        }
+    );
+
+    const options = {
+        sameSite: 'lax',
+        httpOnly: true,
+        secure: false
+    };
+
+    return res
+    .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json(
+        new ApiResponse(
+            200,
+            {},
+            "Driver Logged Out Successfully"
+        )
+    );
+});
+
+export { driverRegister, driverLogin, driverLogout }

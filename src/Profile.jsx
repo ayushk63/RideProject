@@ -4,6 +4,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { TileLayer, MapContainer, Marker, Polyline, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { useNavigate } from "react-router";
 
 function Profile() {
     let [name, setName] = React.useState("");
@@ -14,6 +15,11 @@ function Profile() {
     let [fromCoordinates, setFromCoordinates] = React.useState(null);
     let [toCoordinates, setToCoordinates] = React.useState(null);
     let [routeCoordinates, setRouteCoordinates] = React.useState([]);
+    let [fare, setFare] = React.useState(0);
+    let [isCurrentRide, setIsCurrentRide] = React.useState(false);
+    let [isCurrentRideMessage, setIsCurrentRideMessage] = React.useState("");
+
+    let navigate = useNavigate();
 
     let [cookies, setCookie] = useCookies(['name', 'username', 'email']);
 
@@ -81,6 +87,55 @@ function Profile() {
         return null;
     }
 
+    const userLogout = async () => {
+        try {
+            await axios.post(
+                "http://localhost:3000/api/users/logout",
+                {},
+                {
+                    withCredentials: true
+                }
+            );
+
+            setCookie('name', '', {
+                path: '/'
+            });
+
+            setCookie('username', '', {
+                path: '/'
+            });
+
+            setCookie('email', '', {
+                path: '/'
+            });
+
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const createRide = async () => {
+        try {
+            if (!isCurrentRide) {
+                const response = await axios.post(
+                    "http://localhost:3000/api/rides/createride",
+                    {
+                        fromText,
+                        toText,
+                        fromCoordinates,
+                        toCoordinates,
+                        fare
+                    }
+                );
+            } else {
+                setIsCurrentRideMessage("You are already finding a ride. Please cancel it first.");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="Profile">
             <Navbar />
@@ -97,6 +152,11 @@ function Profile() {
                     TO: <input type = 'text' placeholder="Enter location...."
                     onChange = {(e) => setToText(e.target.value)} className="locationInput" />
                 </div>
+            </div>
+            <div id = 'fareInputDiv'>
+                <div>How much will you pay the driver?</div>
+                <input type = 'text' placeholder="Enter fare...." id = 'fareInput'
+                onChange = {(e) => setFare(parseInt(e.target.value))} />
             </div>
             <button id = 'findRidesButton'
             onClick={getFromAndToCoordinates}>FIND RIDES</button>
@@ -117,6 +177,7 @@ function Profile() {
                     />
                 )}
             </MapContainer>
+            <button className = 'logoutButton' onClick={userLogout}>LOGOUT</button>
         </div>
     )
 }

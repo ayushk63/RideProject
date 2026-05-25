@@ -357,3 +357,37 @@
   background-color: white;
   border: 2px solid black;
 }
+
+.logoutButton {
+  padding: 10px 30px;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: medium;
+  border: none;
+  background-color: black;
+  color: white;
+  width: 150px;
+  border-radius: 10px;
+}
+
+.logoutButton:hover {
+  cursor: pointer;
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
+
+#fareInputDiv {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 300px;
+  font-weight: bold;
+}
+
+#fareInput {
+  width: 200px;
+  font-size: medium;
+  padding: 5px;
+}
