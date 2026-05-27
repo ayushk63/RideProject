@@ -9,7 +9,7 @@ function Home() {
             <div id = 'registerLoginHome'>
                 <div id = 'registerLoginUser'>
                     <div className = 'registerLoginPara'>Want to Find Rides?</div>
-                    <div className = 'buttonArea'>
+                    <div className = 'buttonAreaHome'>
                         <Link to = '/register'>
                             <button className = 'registerLoginButton1'>REGISTER</button>
                         </Link>
@@ -20,7 +20,7 @@ function Home() {
                 </div>
                 <div id = 'registerLoginDriver'>
                     <div className = 'registerLoginPara'>Want to Drive And Earn Money?</div>
-                    <div className="buttonArea">
+                    <div className="buttonAreaHome">
                         <Link to = '/RegisterDriver'>   
                             <button className="registerLoginButton2">REGISTER</button>
                         </Link>

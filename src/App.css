@@ -459,7 +459,7 @@
   font-size: 1.2rem;
 }
 
-.buttonArea {
+.buttonAreaHome {
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
@@ -515,4 +515,45 @@
 #rightHome {
   font-family: cursive;
   margin-top: 6rem;
+}
+
+@media screen and (max-width: 480px) {
+  #heading {
+    font-size: 2rem;
+  }
+
+  #registerLoginHome {
+    gap: 20px;
+    margin-left: 8px;
+    margin-top: 30px;
+  }
+
+  .registerLoginButton1, .registerLoginButton2 {
+    font-size: 10px;
+    width: 80px;
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  .registerLoginPara {
+    font-size: 11px;
+  }
+
+  #homePageCarSection {
+    margin-top: 20px;
+  }
+
+  #homePageCarImage {
+    width: 150px;
+    height: 100px;
+  }
+
+  #rightHome {
+    font-size: 10px;
+    margin-top: 10px;
+  }
+
+  .buttonAreaHome {
+    margin-top: 5px;
+  }
 }
