@@ -517,6 +517,13 @@
   margin-top: 6rem;
 }
 
+#map {
+  height: 300px;
+  margin-left: 320px;
+  margin-top: 50px;
+  width: 500px;
+}
+
 @media screen and (max-width: 480px) {
   #heading {
     font-size: 2rem;
@@ -600,5 +607,65 @@
   #loginDiv1 {
     margin-left: 10px;
     padding: 10px;
+  }
+
+  .Navbar {
+    display: block;
+  }
+
+  #navHeading {
+    margin-top: 8px;
+    margin-left: 0px;
+  }
+
+  .Navbar ul {
+    margin-left: 0px;
+  }
+
+  #fromwhere {
+    margin-left: 0px;
+    gap: 5px;
+  }
+
+  .locationInput {
+    font-size: 10px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+  #fareInputDiv {
+    margin-left: 15px;
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  #fareInput {
+    font-size: 10px;
+    width: 150px;
+  }
+
+  #findRidesButton {
+    padding: 7px 5px;
+    width: 120px;
+    font-size: 10px;
+  }
+
+  #wherego {
+    font-size: 15px;
+  }
+
+  #map {
+    margin-left: 2px;
+    height: 130px;
+    width: 250px;
+    margin-left: 70px;
+    margin-top: 15px;
+  }
+
+  .logoutButton {
+    padding: 7px 5px;
+    font-size: 10px;
+    width: 100px;
   }
 }

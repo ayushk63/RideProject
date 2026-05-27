@@ -237,10 +237,7 @@ function Profile() {
                     onClick = {stopFindingRides}>STOP FINDING</button>
                 </div>
             )}
-            <MapContainer center={[10, 15]} zoom={13} scrollWheelZoom={true}
-            style={{ height: "300px", width: "500px", marginLeft: "320px",
-                marginTop: "50px"
-             }}>
+            <MapContainer id = 'map' center={[10, 15]} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
