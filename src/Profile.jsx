@@ -166,7 +166,7 @@ function Profile() {
                 path: '/'
             });
 
-            navigate("/login");
+            navigate("/Login");
         } catch (error) {
             console.log(error);
         }
