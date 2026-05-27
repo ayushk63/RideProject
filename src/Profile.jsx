@@ -18,6 +18,8 @@ function Profile() {
     let [fare, setFare] = React.useState(0);
     let [isCurrentRide, setIsCurrentRide] = React.useState(false);
     let [isCurrentRideMessage, setIsCurrentRideMessage] = React.useState("");
+    let [currentRideId, setCurrentRideId] = React.useState(null);
+    let [currentRide, setCurrentRide] = React.useState(null);
 
     let navigate = useNavigate();
 
@@ -28,6 +30,35 @@ function Profile() {
         setUsername(cookies['username']);
         setEmail(cookies['email']);
     }, [cookies]);
+
+    const getRide = async () => {
+        try {
+            if (currentRideId) {
+                const response = await axios.get(
+                    "http://localhost:3000/api/rides/getride",
+                    {
+                        params: {
+                            rideId: currentRideId
+                        }
+                    }
+                );
+
+                const ride = response.data.data.ride;
+                return ride;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    React.useEffect(() => {
+        const fetchRide = async () => {
+            const ride = await getRide();
+            setCurrentRide(ride);
+        }
+
+        fetchRide();
+    }, [currentRideId]);
 
     const getCoordinates = async (query) => {
         try {
@@ -72,6 +103,7 @@ function Profile() {
             setToCoordinates(to);
 
             await getRouteCoordinates(from, to);
+            await createRide(from, to);
         } catch (error) {
             console.log(error);
         }
@@ -115,7 +147,7 @@ function Profile() {
         }
     }
 
-    const createRide = async () => {
+    const createRide = async (from, to) => {
         try {
             if (!isCurrentRide) {
                 const response = await axios.post(
@@ -123,11 +155,13 @@ function Profile() {
                     {
                         fromText,
                         toText,
-                        fromCoordinates,
-                        toCoordinates,
+                        fromCoordinates: from,
+                        toCoordinates: to,
                         fare
                     }
                 );
+
+                setCurrentRideId(response.data.data.ride._id);
             } else {
                 setIsCurrentRideMessage("You are already finding a ride. Please cancel it first.");
             }
@@ -160,6 +194,9 @@ function Profile() {
             </div>
             <button id = 'findRidesButton'
             onClick={getFromAndToCoordinates}>FIND RIDES</button>
+            {currentRideId && !currentRide && (
+                <div id = 'findingRide'>Finding Rides For You...</div>
+            )}
             <MapContainer center={[10, 15]} zoom={13} scrollWheelZoom={true}
             style={{ height: "300px", width: "500px", marginLeft: "320px",
                 marginTop: "50px"

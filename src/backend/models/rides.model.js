@@ -23,8 +23,9 @@ const rideSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    driverName: {
-        type: String
+    driver: {
+        type: Array,
+        default: null
     },
     accepted: {
         type: Boolean,

@@ -391,3 +391,9 @@
   font-size: medium;
   padding: 5px;
 }
+
+#findingRide {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
