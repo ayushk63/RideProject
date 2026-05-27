@@ -85,9 +85,9 @@ const userLogin = asyncHandler(async (req, res) => {
     const loggedInUser = await User.findById(user._id).select('-password -refreshToken');
 
     const options = {
-        secure: false,
+        secure: true,
         httpOnly: true,
-        sameSite: 'lax'
+        sameSite: 'none'
     }
 
     return res
@@ -119,9 +119,9 @@ const userLogout = asyncHandler(async (req, res) => {
     );
 
     const options = {
-        sameSite: 'lax',
+        sameSite: 'none',
         httpOnly: true,
-        secure: false
+        secure: true
     };
 
     return res

@@ -84,8 +84,8 @@ const driverLogin = asyncHandler(async(req, res) => {
     const loggedInDriver = await Driver.findById(driver._id).select('-password -refreshToken');
 
     const options = {
-        sameSite: 'lax',
-        secure: false,
+        sameSite: 'none',
+        secure: true,
         httpOnly: true
     };
 
@@ -118,9 +118,9 @@ const driverLogout = asyncHandler(async (req, res) => {
     );
 
     const options = {
-        sameSite: 'lax',
+        sameSite: 'none',
         httpOnly: true,
-        secure: false
+        secure: true
     };
 
     return res
