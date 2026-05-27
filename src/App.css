@@ -397,3 +397,122 @@
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+#stopFindingButton {
+  width: 200px;
+  background-color: red;
+}
+
+#stopFindingButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+}
+
+.rideDiv {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgb(16, 16, 54);
+  border-radius: 15px;
+  padding: 10px;
+  width: 400px;
+  margin-left: 350px;
+}
+
+#acceptRideButton {
+  padding: 10px 30px;
+  width: 150px;
+  border: none;
+  font-size: medium;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+#acceptRideButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: red;
+}
+
+#currentDriverDiv {
+  font-weight: bold;
+  margin-top: 50px;
+  width: 360px;
+  margin-left: 360px;
+  padding: 10px;
+  box-shadow: gray 20px 20px 20px;
+  text-align: center;
+}
+
+#registerLoginHome {
+  display: flex;
+  gap: 15rem;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.buttonArea {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.registerLoginButton1 {
+  padding: 10px 30px;
+  font-size: medium;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  width: 150px;
+  border: none;
+  border-radius: 20px;
+}
+
+.registerLoginButton1:hover {
+  cursor: pointer;
+  color: red;
+  border: 2px solid red;
+  background-color: white;
+}
+
+.registerLoginButton2 {
+  padding: 10px 30px;
+  font-size: medium;
+  font-weight: bold;
+  background-color: darkgreen;
+  color: white;
+  width: 150px;
+  border: none;
+  border-radius: 20px;
+}
+
+.registerLoginButton2:hover {
+  cursor: pointer;
+  color: darkgreen;
+  border: 2px solid darkgreen;
+  background-color: white;
+}
+
+#heading {
+  margin-top: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Verdana;
+}
+
+#homePageCarSection {
+  display: flex;
+}
+
+#rightHome {
+  font-family: cursive;
+  margin-top: 6rem;
+}

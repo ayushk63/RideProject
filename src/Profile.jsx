@@ -20,6 +20,7 @@ function Profile() {
     let [isCurrentRideMessage, setIsCurrentRideMessage] = React.useState("");
     let [currentRideId, setCurrentRideId] = React.useState(null);
     let [currentRide, setCurrentRide] = React.useState(null);
+    let [isFindingRide, setIsFindingRide] = React.useState(false);
 
     let navigate = useNavigate();
 
@@ -52,12 +53,20 @@ function Profile() {
     }
 
     React.useEffect(() => {
-        const fetchRide = async () => {
-            const ride = await getRide();
-            setCurrentRide(ride);
-        }
+        if (!currentRideId) return;
 
-        fetchRide();
+        const interval = setInterval(async () => {
+            const ride = await getRide();
+
+            setCurrentRide(ride);
+
+            if (ride?.accepted) {
+                setIsFindingRide(false);
+                clearInterval(interval);
+            }
+        }, 2000);
+
+        return () => clearInterval(interval);
     }, [currentRideId]);
 
     const getCoordinates = async (query) => {
@@ -150,6 +159,8 @@ function Profile() {
     const createRide = async (from, to) => {
         try {
             if (!isCurrentRide) {
+                setIsFindingRide(true);
+
                 const response = await axios.post(
                     "http://localhost:3000/api/rides/createride",
                     {
@@ -165,6 +176,23 @@ function Profile() {
             } else {
                 setIsCurrentRideMessage("You are already finding a ride. Please cancel it first.");
             }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const stopFindingRides = async () => {
+        try {
+            await axios.post(
+                "http://localhost:3000/api/rides/deleteride",
+                {
+                    rideId: currentRideId
+                }
+            );
+
+            setIsFindingRide(false);
+            setCurrentRideId(null);
+            setCurrentRide(null);
         } catch (error) {
             console.log(error);
         }
@@ -194,8 +222,20 @@ function Profile() {
             </div>
             <button id = 'findRidesButton'
             onClick={getFromAndToCoordinates}>FIND RIDES</button>
-            {currentRideId && !currentRide && (
-                <div id = 'findingRide'>Finding Rides For You...</div>
+            {currentRide?.accepted && (
+                <div id = 'currentDriverDiv'>
+                    <div id = 'driverName'>Driver Name: {currentRide.driver[0].name}</div>
+                    <div id = 'vehicleName'>Vehicle Name: {currentRide.driver[0].vehicleName}</div>
+                    <div id = 'vehicleNumber'>Vehicle Number: {currentRide.driver[0].vehicleNumber}</div>
+                    <div id = 'vehicleType'>Vehicle Type: {currentRide.driver[0].vehicleType}</div>
+                </div>
+            )}
+            {isFindingRide && (
+                <div id = 'findingRideDiv'>
+                    <div id = 'findingRide'>Finding Rides For You...</div>
+                    <button className="logoutButton" id = 'stopFindingButton'
+                    onClick = {stopFindingRides}>STOP FINDING</button>
+                </div>
             )}
             <MapContainer center={[10, 15]} zoom={13} scrollWheelZoom={true}
             style={{ height: "300px", width: "500px", marginLeft: "320px",

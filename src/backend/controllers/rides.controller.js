@@ -90,7 +90,7 @@ const getRide = asyncHandler(async (req, res) => {
     );
 });
 
-const acceptRide = asyncHandler(async () => {
+const acceptRide = asyncHandler(async (req, res) => {
     const { driverUsername, rideId } = req.body;
 
     if (
@@ -141,9 +141,32 @@ const acceptRide = asyncHandler(async () => {
     );
 });
 
+const deleteRide = asyncHandler(async (req, res) => {
+    const { rideId } = req.body;
+
+    const ride = await Ride.findById(rideId);
+
+    if (!ride) {
+        throw new ApiError(404, "Ride does not exist");
+    }
+
+    await Ride.findByIdAndDelete(rideId);
+
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(
+            200,
+            {},
+            "Successfully Deleted Ride"
+        )
+    );
+});
+
 export { 
     createRide,
     showRides,
     getRide,
-    acceptRide
+    acceptRide,
+    deleteRide
 }

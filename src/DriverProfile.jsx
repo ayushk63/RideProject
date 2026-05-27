@@ -5,7 +5,9 @@ import axios from "axios";
 
 function DriverProfile() {
     let [name, setName] = React.useState("");
+    let [username, setUsername] = React.useState("");
     let [rides, setRides] = React.useState(null);
+    let [currentRide, setCurrentRide] = React.useState(null);
 
     let [cookies, setCookie] = useCookies([
         'name',
@@ -18,6 +20,7 @@ function DriverProfile() {
 
     React.useEffect(() => {
         setName(cookies['name']);
+        setUsername(cookies['username']);
     }, [cookies]);
 
     const showRides = async () => {
@@ -32,6 +35,22 @@ function DriverProfile() {
         }
     }
 
+    const acceptRide = async (rideId) => {
+        try {
+            const response = await axios.post(
+                "http://localhost:3000/api/rides/acceptride",
+                {
+                    driverUsername: username,
+                    rideId
+                }
+            );
+
+            setCurrentRide(response.data.data.updatedRide);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     React.useEffect(() => {
         showRides();
     }, [rides]);
@@ -41,11 +60,15 @@ function DriverProfile() {
             <Navbar />
             <br />
             <div>Hi, {name}!</div>
-            {rides && rides.length > 0 && rides.map((ride) => {
+            {rides && rides.length > 0 && rides.map((ride) => (
                 <div className = 'rideDiv'>
-                    {JSON.stringify(ride)}
+                    <div id = 'driverFROM'>FROM: {ride.fromText}</div>
+                    <div id = 'driverTO'>TO: {ride.toText}</div>
+                    <div id = 'driverFare'>Fare: {ride.fare}</div>
+                    <button id = 'acceptRideButton'
+                    onClick={() => acceptRide(ride._id)}>ACCEPT</button>
                 </div>
-            })}
+            ))}
         </div>
     )
 }
