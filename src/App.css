@@ -668,4 +668,15 @@
     font-size: 10px;
     width: 100px;
   }
+
+  #registerDiv2 {
+    margin-left: 5px;
+    padding: 10px;
+    width: 160px;
+  }
+
+  #loginDiv2 {
+    margin-left: 5px;
+    padding: 10px;
+  }
 }
