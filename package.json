@@ -3,12 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+
+  "engines": {
+    "node": "20.x"
+  },
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "node server.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
+
   "dependencies": {
     "axios": "^1.16.1",
     "bcrypt": "^6.0.0",
@@ -18,7 +25,7 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "leaflet": "^1.9.4",
-    "mongoose": "^9.6.2",
+    "mongoose": "^8.18.0",
     "react": "^19.2.6",
     "react-cookie": "^8.1.2",
     "react-dom": "^19.2.6",
@@ -26,6 +33,7 @@
     "react-leaflet": "^5.0.0",
     "react-router": "^7.15.1"
   },
+
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.14",
