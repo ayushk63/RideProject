@@ -26,7 +26,7 @@ function DriverProfile() {
     const showRides = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:3000/api/rides/showrides"
+                "https://rideproject.onrender.com/api/rides/showrides"
             );
 
             setRides(response.data.data.rides);
@@ -38,7 +38,7 @@ function DriverProfile() {
     const acceptRide = async (rideId) => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/rides/acceptride",
+                "https://rideproject.onrender.com/api/rides/acceptride",
                 {
                     driverUsername: username,
                     rideId

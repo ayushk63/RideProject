@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-mongoose.connect("mongodb://localhost:27017/RideProject");
+mongoose.connect(process.env.MONGODB_URI);
 
 const driverSchema = mongoose.Schema({
     name: {

@@ -15,7 +15,7 @@ function Register() {
     const userRegister = async () => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/users/register",
+                "https://rideproject.onrender.com/api/users/register",
                 {
                     name,
                     username,

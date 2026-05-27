@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://localhost:27017/RideProject");
+mongoose.connect(process.env.MONGODB_URI);
 
 const rideSchema = mongoose.Schema({
     fromText: {

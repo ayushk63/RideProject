@@ -17,7 +17,7 @@ function RegisterDriver() {
     const driverRegister = async () => {
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/drivers/register",
+                "https://rideproject.onrender.com/api/drivers/register",
                 {
                     name,
                     username,

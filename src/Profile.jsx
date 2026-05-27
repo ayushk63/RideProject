@@ -36,7 +36,7 @@ function Profile() {
         try {
             if (currentRideId) {
                 const response = await axios.get(
-                    "http://localhost:3000/api/rides/getride",
+                    "https://rideproject.onrender.com/api/rides/getride",
                     {
                         params: {
                             rideId: currentRideId
@@ -131,7 +131,7 @@ function Profile() {
     const userLogout = async () => {
         try {
             await axios.post(
-                "http://localhost:3000/api/users/logout",
+                "https://rideproject.onrender.com/api/users/logout",
                 {},
                 {
                     withCredentials: true
@@ -162,7 +162,7 @@ function Profile() {
                 setIsFindingRide(true);
 
                 const response = await axios.post(
-                    "http://localhost:3000/api/rides/createride",
+                    "https://rideproject.onrender.com/api/rides/createride",
                     {
                         fromText,
                         toText,
@@ -184,7 +184,7 @@ function Profile() {
     const stopFindingRides = async () => {
         try {
             await axios.post(
-                "http://localhost:3000/api/rides/deleteride",
+                "https://rideproject.onrender.com/api/rides/deleteride",
                 {
                     rideId: currentRideId
                 }
