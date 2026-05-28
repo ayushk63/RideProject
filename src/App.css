@@ -546,6 +546,55 @@
   width: 500px;
 }
 
+.Contact {
+  color: black;
+}
+
+#contactDiv {
+  background-color: rgb(122, 14, 14);
+  color: white;
+  padding: 20px;
+  width: 400px;
+  margin-left: 330px;
+  margin-top: 20px;
+  border-radius: 25px;
+}
+
+.queryInput {
+  font-size: medium;
+  margin-top: 10px;
+  padding: 5px;
+  width: 300px;
+  border-radius: 15px;
+  border: none;
+} 
+
+#feelfreetocontact {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  font-family: Verdana;
+}
+
+#submitButton {
+  border-radius: 25px;
+  padding: 10px 30px;
+  font-size: medium;
+  border: none;
+  color: white;
+  background-color: darkgreen;
+  width: 150px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#submitButton:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid darkgreen;
+  color: darkgreen;
+}
+
 @media screen and (max-width: 480px) {
   #heading {
     font-size: 2rem;
@@ -727,5 +776,22 @@
     margin-left: 40px;
     font-size: 1rem;
     width: 300px;
+  }
+
+  .queryInput {
+    width: 250px;
+    font-size: 10px;
+  }
+
+  #contactDiv {
+    margin-left: 40px;
+    padding: 10px;
+    width: 300px;
+  }
+
+  #submitButton {
+    width: 100px;
+    font-size: 10px;
+    padding: 7px 9px;
   }
 }
