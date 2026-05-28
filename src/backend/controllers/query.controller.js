@@ -12,13 +12,13 @@ const createQuery = asyncHandler(async (req, res) => {
         throw new ApiError(401, "All fields are required");
     }
 
-    const query = await Query.create({
+    const createdQuery = await Query.create({
         name,
         email, 
         query
     });
 
-    if (!query) {
+    if (!createdQuery) {
         throw new ApiError(404, "Something went wrong while submitting the query");
     }
 
