@@ -12,6 +12,7 @@ import Contact from "./Contact";
 import DriverAbout from "./DriverAbout";
 import DriverContact from "./DriverContact";
 import UserProfile from "./UserProfile";
+import ViewDriverProfile from "./ViewDriverProfile";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path = '/DriverAbout' element = {<DriverAbout />} />
         <Route path = '/DriverContact' element = {<DriverContact />} />
         <Route path = '/UserProfile' element = {<UserProfile />} />
+        <Route path = '/ViewDriverProfile' element = {<ViewDriverProfile />} />
       </Routes>
     </>
   );

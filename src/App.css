@@ -595,6 +595,16 @@
   color: darkgreen;
 }
 
+.UserProfile, .ViewDriverProfile {
+  color: black;
+}
+
+.profileGreeting {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 480px) {
   #heading {
     font-size: 2rem;
