@@ -10,10 +10,10 @@ function DriverNavbar() {
                     <li>Home</li>
                 </Link>
                 <li>Profile</li>
-                <Link to = '/About' className="navLink">
+                <Link to = '/DriverAbout' className="navLink">
                     <li>About</li>
                 </Link>
-                <Link to = '/Contact' className="navLink">
+                <Link to = '/DriverContact' className="navLink">
                     <li>Contact</li>
                 </Link>
             </ul>

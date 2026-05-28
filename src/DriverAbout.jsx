@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from './Navbar';
+import DriverNavbar from './DriverNavbar';
 import auto2 from './Images/auto2.avif';
 
-function About() {
+function DriverAbout() {
     return (
         <div className='About'>
-            <Navbar />
+            <DriverNavbar />
             <div id = 'aboutDiv1'>
                 <div id = 'aboutLeft1'>
                     <img src = {auto2} id = 'autoImage2' />
@@ -21,4 +21,4 @@ function About() {
     )
 }
 
-export default About
+export default DriverAbout
