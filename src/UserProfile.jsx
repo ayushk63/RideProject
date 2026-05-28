@@ -38,7 +38,7 @@ function UserProfile() {
     const changePassword = async () => {
         try {
             await axios.post(
-                "https://rideproject.onrender.com/api/users/changepassword",
+                "https://rideproject.onrender.com/api/users/updatepassword",
                 {
                     username,
                     oldPassword,

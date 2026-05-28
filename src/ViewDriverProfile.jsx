@@ -46,7 +46,7 @@ function ViewDriverProfile() {
     const changePassword = async () => {
         try {
             await axios.post(
-                "https://rideproject.onrender.com/api/drivers/changepassword",
+                "https://rideproject.onrender.com/api/drivers/updatepassword",
                 {
                     username,
                     oldPassword,
