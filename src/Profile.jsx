@@ -19,6 +19,10 @@ import { useCookies } from "react-cookie";
 import { TileLayer, MapContainer, Marker, Polyline, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useNavigate } from "react-router";
+import carHome from "./Images/carHome.avif";
+import bikeHome from "./Images/bikeHome.webp";
+import autoHome from "./Images/autoHome.avif";
+import rickshawHome from "./Images/rickshawHome.webp";
 
 function Profile() {
     let [name, setName] = React.useState("");
@@ -220,6 +224,20 @@ function Profile() {
             <br />
             <div>Hi, {name}!</div>
             <div>Welcome To Alpha Rides!</div>
+            <div id = 'vehicleRow'>
+                <div className = 'vehicleImageDiv'>
+                    <img src = {autoHome} className = 'vehicleImage' />
+                </div>
+                <div className = 'vehicleImageDiv'>
+                    <img src = {carHome} className = 'vehicleImage' />
+                </div>
+                <div className = 'vehicleImageDiv'>
+                    <img src = {bikeHome} className = 'vehicleImage' />
+                </div>
+                <div className = 'vehicleImageDiv'>
+                    <img src = {rickshawHome} className = 'vehicleImage' />
+                </div>
+            </div>
             <div id = 'wherego'>Where do you want to go?</div>
             <div id = 'fromwhere'>
                 <div id = 'from'>

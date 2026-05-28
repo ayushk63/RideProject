@@ -672,6 +672,18 @@
   margin-top: 10px;
 }
 
+#vehicleRow {
+  gap: 3rem;
+  margin-left: 70px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.vehicleImage {
+  width: 200px;
+  height: 150px;
+}
+
 @media screen and (max-width: 480px) {
   #heading {
     font-size: 2rem;
@@ -906,5 +918,15 @@
   .changeInput {
     font-size: 10px;
     width: 150px;
+  }
+
+  .vehicleImage {
+    width: 80px;
+    height: 70px;
+  }
+
+  #vehicleRow {
+    margin-left: 20px;
+    gap: 10px;
   }
 }
