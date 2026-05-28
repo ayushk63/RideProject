@@ -1,13 +1,16 @@
 import React from "react";
-import Navbar from "./Navbar";
+import DriverNavbar from "./DriverNavbar";
 import { useCookies } from "react-cookie";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function DriverProfile() {
     let [name, setName] = React.useState("");
     let [username, setUsername] = React.useState("");
     let [rides, setRides] = React.useState(null);
     let [currentRide, setCurrentRide] = React.useState(null);
+
+    let navigate = useNavigate();
 
     let [cookies, setCookie] = useCookies([
         'name',
@@ -55,9 +58,49 @@ function DriverProfile() {
         showRides();
     }, [rides]);
 
+    const driverLogout = async () => {
+        try {
+            await axios.post(
+                "https://rideproject.onrender.com/api/drivers/logout",
+                {},
+                {
+                    withCredentials: true
+                }
+            );
+
+            setCookie("name", "", {
+                path: "/"
+            });
+
+            setCookie("username", "", {
+                path: "/"
+            });
+
+            setCookie("email", "", {
+                path: "/"
+            });
+            
+            setCookie("vehicleName", "", {
+                path: "/"
+            });
+
+            setCookie("vehicleNumber", "", {
+                path: "/"
+            });
+
+            setCookie("vehicleType", "", {
+                path: "/"
+            });
+
+            navigate("/LoginDriver");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="DriverProfile">
-            <Navbar />
+            <DriverNavbar />
             <br />
             <div>Hi, {name}!</div>
             {rides && rides.length > 0 && rides.map((ride) => (
@@ -69,6 +112,7 @@ function DriverProfile() {
                     onClick={() => acceptRide(ride._id)}>ACCEPT</button>
                 </div>
             ))}
+            <button className="logoutButton" onClick={driverLogout}>LOGOUT</button>
         </div>
     )
 }

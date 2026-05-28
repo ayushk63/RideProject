@@ -358,6 +358,11 @@
   border: 2px solid black;
 }
 
+.navLink {
+  color: white;
+  text-decoration: none;
+}
+
 .logoutButton {
   padding: 10px 30px;
   margin-top: 20px;

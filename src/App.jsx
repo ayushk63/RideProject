@@ -7,6 +7,8 @@ import Profile from "./Profile";
 import RegisterDriver from "./RegisterDriver";
 import LoginDriver from "./LoginDriver";
 import DriverProfile from "./DriverProfile";
+import About from "./About";
+import Contact from "./Contact";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path = '/RegisterDriver' element = {<RegisterDriver />} />
         <Route path = '/LoginDriver' element = {<LoginDriver />} />
         <Route path = '/DriverProfile' element = {<DriverProfile />} />
+        <Route path = '/About' element = {<About />} />
+        <Route path = '/Contact' element = {<Contact />} />
       </Routes>
     </>
   );

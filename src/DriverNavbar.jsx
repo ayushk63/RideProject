@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router";
 
-function Navbar() {
+function DriverNavbar() {
     return (
         <div className="Navbar">
             <div id = 'navHeading'>ALPHA RIDES</div>
             <ul>
-                <Link to = "/Profile" className="navLink">
+                <Link to = "/DriverProfile" className="navLink">
                     <li>Home</li>
                 </Link>
                 <li>Profile</li>
@@ -21,4 +21,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default DriverNavbar
