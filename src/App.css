@@ -605,6 +605,73 @@
   margin-top: 20px;
 }
 
+#theProfileDiv {
+  display: flex;
+}
+
+.bikeImage {
+  width: 300px;
+  height: 250px;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.wantToChange {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-family: monospace;
+}
+
+.changeButton {
+  margin-top: 15px;
+  border-radius: 10px;
+  width: 250px;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  font-size: medium;
+  border: none;
+  padding: 10px 30px;
+}
+
+.changeButton:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.changeButton2 {
+  margin-top: 15px;
+  border-radius: 10px;
+  width: 150px;
+  color: white;
+  background-color: red;
+  font-weight: bold;
+  font-size: medium;
+  padding: 10px 30px;
+  border: none;
+}
+
+.changeButton2:hover {
+  cursor: pointer;
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+}
+
+#theProfileRight {
+  margin-left: 250px;
+  margin-top: 70px;
+}
+
+.changeInput {
+  padding: 5px;
+  font-size: medium;
+  width: 250px;
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 480px) {
   #heading {
     font-size: 2rem;
@@ -803,5 +870,41 @@
     width: 100px;
     font-size: 10px;
     padding: 7px 9px;
+  }
+
+  #theProfileDiv {
+    display: block;
+  }
+
+  .bikeImage {
+    margin-left: 0px;
+    width: 200px;
+    height: 150px;
+  }
+
+  #theProfileRight {
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .wantToChange {
+    font-size: 15px;
+  }
+
+  .changeButton {
+    padding: 9px 7px;
+    font-size: 10px;
+    width: 150px;
+  }
+
+  .changeButton2 {
+    padding: 9px 7px;
+    font-size: 10px;
+    width: 100px;
+  }
+
+  .changeInput {
+    font-size: 10px;
+    width: 150px;
   }
 }
