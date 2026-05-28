@@ -629,6 +629,24 @@
     margin-top: 125px;
   }
 
+  #aboutDiv1 {
+    display: block;
+  }
+
+  #autoImage2 {
+    width: 220px;
+    height: 200px;
+  }
+
+  #aboutRight1 {
+    font-size: 15px;
+    width: 300px;
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
   #loginDiv1 {
     margin-left: 10px;
     padding: 10px;
