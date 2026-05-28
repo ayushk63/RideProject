@@ -136,4 +136,79 @@ const driverLogout = asyncHandler(async (req, res) => {
     );
 });
 
-export { driverRegister, driverLogin, driverLogout }
+const updateName = asyncHandler(async (req, res) => {
+    const { newName, username } = req.body;
+
+    if (
+        [newName, username].some((field) => !field || field?.trim() === "")
+    ) {
+        throw new ApiError(401, "New name or username empty or undefined");
+    }
+
+    const driver = await Driver.findOne({ username }).select("-refreshToken -password");
+
+    if (!driver) {
+        throw new ApiError(404, "Driver Not Found");
+    }
+
+    const updatedDriver = await Driver.findByIdAndUpdate(
+        driver._id,
+        {
+            $set: {
+                name: newName
+            }
+        },
+        {
+            new: true
+        }
+    );
+
+    if (!updatedDriver) {
+        throw new ApiError(500, "Something went wrong while updating the user's name");
+    }
+
+    return res
+    .status(200)
+    .json(
+        200,
+        {
+            updatedDriver
+        },
+        "Successfully updated the driver's name"
+    );
+});
+
+const updatePassword = asyncHandler(async (req, res) => {
+    const { username, oldPassword, newPassword } = req.body;
+
+    if (
+        [username, oldPassword, newPassword].some((field) => !field || field?.trim() === '')
+    ) {
+        throw new ApiError(401, "All fields are required");
+    }
+
+    const driver = await Driver.findOne({ username });
+
+    if (!driver) {
+        throw new ApiError(404, "User Not Found");
+    }
+
+    const isPasswordValid = driver.isPasswordCorrect(oldPassword);
+
+    if (!isPasswordValid) {
+        throw new ApiError(409, "Incorrect Password");
+    }
+
+    driver.password = newPassword;
+    driver.save();
+
+    return res
+    .status(200)
+    .json(
+        200,
+        {},
+        "Successfully Updated Driver's Password"
+    );
+});
+
+export { driverRegister, driverLogin, driverLogout, updateName, updatePassword }

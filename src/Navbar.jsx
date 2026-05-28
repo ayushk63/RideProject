@@ -9,7 +9,9 @@ function Navbar() {
                 <Link to = "/Profile" className="navLink">
                     <li>Home</li>
                 </Link>
-                <li>Profile</li>
+                <Link to = '/UserProfile' className="navLink">
+                    <li>Profile</li>
+                </Link>
                 <Link to = '/About' className="navLink">
                     <li>About</li>
                 </Link>

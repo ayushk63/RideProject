@@ -9,7 +9,9 @@ function DriverNavbar() {
                 <Link to = "/DriverProfile" className="navLink">
                     <li>Home</li>
                 </Link>
-                <li>Profile</li>
+                <Link to = '/viewDriverProfile' className="navLink">
+                    <li>Profile</li>
+                </Link>
                 <Link to = '/DriverAbout' className="navLink">
                     <li>About</li>
                 </Link>
