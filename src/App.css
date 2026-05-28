@@ -682,4 +682,10 @@
     margin-left: 5px;
     padding: 10px;
   }
+
+  .rideDiv {
+    margin-left: 5px;
+    font-size: 1rem;
+    width: 300px;
+  }
 }
