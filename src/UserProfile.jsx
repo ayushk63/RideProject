@@ -22,8 +22,8 @@ function UserProfile() {
             const response = await axios.post(
                 "https://rideproject.onrender.com/api/users/updatename",
                 {
-                    newName,
-                    username
+                    username,
+                    newName
                 }
             );
 
