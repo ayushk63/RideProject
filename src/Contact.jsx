@@ -13,7 +13,7 @@ function Contact() {
     const submitQuery = async () => {
         try {
             await axios.post(
-                "https://rideproject.onrender.com/queries/createquery",
+                "https://rideproject.onrender.com/api/queries/createquery",
                 {
                     name, 
                     email,
