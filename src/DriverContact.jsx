@@ -6,6 +6,23 @@ function DriverContact() {
     let [email, setEmail] = React.useState("");
     let [query, setQuery] = React.useState("");
 
+    const submitQuery = async () => {
+        try {
+            await axios.post(
+                "https://rideproject.onrender.com/queries/createquery",
+                {
+                    name, 
+                    email,
+                    query
+                }
+            );
+
+            navigate("/DriverContact");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className = 'Contact'>
             <Navbar />
@@ -22,7 +39,8 @@ function DriverContact() {
                     <textarea rows={8} className="queryInput" placeholder="Enter your query...."
                     onChange={(e) => setQuery(e.target.value)} />
                     <br />
-                    <button type = 'button' id = 'submitButton'>SUBMIT</button>
+                    <button type = 'button' id = 'submitButton'
+                    onClick={submitQuery}>SUBMIT</button>
                 </form>
             </div>
         </div>

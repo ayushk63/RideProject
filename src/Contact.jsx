@@ -1,10 +1,31 @@
 import React from "react";
 import Navbar from "./Navbar";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 function Contact() {
     let [name, setName] = React.useState("");
     let [email, setEmail] = React.useState("");
     let [query, setQuery] = React.useState("");
+
+    let navigate = useNavigate();
+
+    const submitQuery = async () => {
+        try {
+            await axios.post(
+                "https://rideproject.onrender.com/queries/createquery",
+                {
+                    name, 
+                    email,
+                    query
+                }
+            );
+
+            navigate("/Contact");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className = 'Contact'>
@@ -22,7 +43,8 @@ function Contact() {
                     <textarea rows={8} className="queryInput" placeholder="Enter your query...."
                     onChange={(e) => setQuery(e.target.value)} />
                     <br />
-                    <button type = 'button' id = 'submitButton'>SUBMIT</button>
+                    <button type = 'button' id = 'submitButton'
+                    onClick={submitQuery}>SUBMIT</button>
                 </form>
             </div>
         </div>

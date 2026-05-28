@@ -171,11 +171,13 @@ const updateName = asyncHandler(async (req, res) => {
     return res
     .status(200)
     .json(
-        200,
-        {
-            updatedUser
-        },
-        "Successfully updated the user's name"
+        new ApiResponse(
+            200,
+            {
+                updatedUser
+            },
+            "Successfully updated the user's name"
+        )
     );
 });
 
@@ -206,9 +208,11 @@ const updatePassword = asyncHandler(async (req, res) => {
     return res
     .status(200)
     .json(
-        200,
-        {},
-        "Successfully Updated User's Password"
+        new ApiResponse(
+            200,
+            {},
+            "Successfully Updated User's Password"
+        )
     );
 });
 

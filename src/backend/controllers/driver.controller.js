@@ -170,11 +170,13 @@ const updateName = asyncHandler(async (req, res) => {
     return res
     .status(200)
     .json(
-        200,
-        {
-            updatedDriver
-        },
-        "Successfully updated the driver's name"
+        new ApiResponse(
+            200,
+            {
+                updatedDriver
+            },
+            "Successfully updated the driver's name"
+        )
     );
 });
 
@@ -205,9 +207,11 @@ const updatePassword = asyncHandler(async (req, res) => {
     return res
     .status(200)
     .json(
-        200,
-        {},
-        "Successfully Updated Driver's Password"
+        new ApiResponse(
+            200, 
+            {},
+            "Successfully Updated Driver's Password"
+        )
     );
 });
 
